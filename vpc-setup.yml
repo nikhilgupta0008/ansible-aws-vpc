@@ -31,7 +31,7 @@
           Name: vprofile_pubsub1
       register: pubsub1_out
 
-      - debug:
+    - debug:
           var: pubsub1_out
 
     - name: create Public subnet 2 in zone2
@@ -46,7 +46,7 @@
             Name: vprofile_pubsub2
       register: pubsub2_out
 
-      - debug:
+    - debug:
           var: pubsub2_out
 
 
@@ -62,7 +62,7 @@
             Name: vprofile_pubsub3
       register: pubsub3_out
 
-      - debug:
+    - debug:
           var: pubsub3_out
 
     - name: create Private subnet 1 in zone1
@@ -77,7 +77,7 @@
             Name: vprofile_privsub1
       register: privsub1_out
 
-      - debug:
+    - debug:
           var: privsub1_out
 
     - name: create Private subnet 2 in zone2
@@ -92,7 +92,7 @@
             Name: vprofile_privsub2
       register: privsub2_out
 
-      - debug:
+    - debug:
           var: privsub2_out
 
     - name: create Private subnet 3 in zone3
@@ -107,7 +107,7 @@
             Name: vprofile_privsub3
       register: privsub3_out
 
-      - debug:
+    - debug:
           var: privsub3_out
 
     - name: Internet gateway setup
@@ -119,7 +119,7 @@
           Name: vprofile_IGW
       register: igw_out
 
-      - debug:
+    - debug:
           var: igw_out
 
     - name: Set up public subnet route table
@@ -137,7 +137,7 @@
             gateway_id: "{{ igw_out.gateway_id }}"
       register: pubRT_out
 
-      - debug:
+    - debug:
           var: pubRT_out
 
     - name: Create new NAT gateway and allocate new EIP if a NAT gateway does not exists
@@ -149,7 +149,7 @@
         if_exist_do_not_create: true
       register: NATGW_out
 
-      - debug:
+    - debug:
           var: NATGW_out
 
     - name: Set up Private subnet route table
@@ -167,5 +167,5 @@
               gateway_id: "{{ NATGW_out.nat_gateway_id }}"
       register: privRT_out
 
-      - debug:
+    - debug:
           var: privRT_out
