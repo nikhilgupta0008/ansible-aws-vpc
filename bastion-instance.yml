@@ -7,6 +7,9 @@
     - name: Import VPC setup Varibale
       include_vars: Vars/bastion_setup
 
+    - name: Import Output vars
+      include_vars: Vars/output_vars
+
     - name: Create vprofile ec2 key
       ec2_key:
         name: vprofile-key
@@ -57,6 +60,7 @@
           Project: Vprofile
           Owner: DevOps Team
         group_id: "{{ Bastion_out.group_id }}"
+        vpc_subnet_id: "{{ pubsub1id }}"
       register: bastionHost_out
 
     - debug:
