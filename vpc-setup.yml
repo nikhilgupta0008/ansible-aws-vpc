@@ -168,7 +168,7 @@
       register: privRT_out
 
     - debug:
-          var: privRT_out
+        var: privRT_out
 
     - debug:
         var: "{{ item }}"
