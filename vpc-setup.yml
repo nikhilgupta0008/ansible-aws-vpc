@@ -25,6 +25,7 @@
         region: "{{ region }}"
         az: "{{ zone1 }}"
         cidr: "{{PubSub1Cidr}}"
+        state: "{{state}}"
         map_public: yes
         resource_tags:
           Name: vprofile_pubsub1
@@ -36,6 +37,7 @@
           region: "{{ region }}"
           az: "{{ zone2 }}"
           cidr: "{{PubSub2Cidr}}"
+          state: "{{state}}"
           map_public: yes
           resource_tags:
             Name: vprofile_pubsub2
@@ -47,6 +49,7 @@
           region: "{{ region }}"
           az: "{{ zone3 }}"
           cidr: "{{PubSub3Cidr}}"
+          state: "{{state}}"
           map_public: yes
           resource_tags:
             Name: vprofile_pubsub3
@@ -58,6 +61,7 @@
           region: "{{ region }}"
           az: "{{ zone1 }}"
           cidr: "{{PrivSub1Cidr}}"
+          state: "{{state}}"
           map_public: yes
           resource_tags:
             Name: vprofile_privsub1
@@ -69,6 +73,7 @@
           region: "{{ region }}"
           az: "{{ zone2 }}"
           cidr: "{{PrivSub2Cidr}}"
+          state: "{{state}}"
           map_public: yes
           resource_tags:
             Name: vprofile_privsub2
@@ -80,7 +85,17 @@
           region: "{{ region }}"
           az: "{{ zone3 }}"
           cidr: "{{PrivSub3Cidr}}"
+          state: "{{state}}"
           map_public: yes
           resource_tags:
             Name: vprofile_privsub3
       register: privsub3_out
+
+    - name: Internet gateway setup
+      ec2_vpc_igw:
+        vpc_id: "{{vpcout.vpc.id}}"
+        region: "{{ region }}"
+        state: "{{state}}"
+        resource_tags:
+          Name: vprofile_IGW
+      register: igw_out
