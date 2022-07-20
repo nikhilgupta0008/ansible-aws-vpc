@@ -5,7 +5,7 @@
   gather_facts: False
   tasks:
     - name: Import VPC setup Varibale
-      include_vars: Vars/bastion_setup
+      include_vars: Vars/vpc_setup
 
     - name: Import Output vars
       include_vars: Vars/output_vars
